@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Search as SearchIcon } from 'lucide-react';
@@ -35,7 +36,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ className }) => {
       <Input
         type="search"
         placeholder="Search for products, brands and more"
-        className="rounded-r-none focus-visible:ring-0 border-r-0"
+        className="rounded-r-none focus-visible:ring-0 border-r-0 text-black dark:text-foreground"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         aria-label="Search products"
