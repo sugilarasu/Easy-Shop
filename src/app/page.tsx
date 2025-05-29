@@ -1,3 +1,4 @@
+
 'use client'
 
 import { useState, useEffect, useMemo } from 'react';
@@ -8,6 +9,8 @@ import FilterSortControls, { AppliedFilters } from '@/components/FilterSortContr
 import ProductRecommendations from '@/components/ProductRecommendations';
 import { getAllProducts, Product } from '@/lib/products';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { TrendingUp, Zap, Sparkles } from 'lucide-react';
 
 export default function HomePage() {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
@@ -21,7 +24,6 @@ export default function HomePage() {
     const categories = searchParams.getAll('category') || [];
     const brands = searchParams.getAll('brand') || [];
     const minPrice = Number(searchParams.get('minPrice') || 0);
-    // Determine max price from products after they load
     const initialMaxPrice = allProducts.length > 0 ? Math.max(...allProducts.map(p => p.price), 0) : 1000;
     const maxPrice = Number(searchParams.get('maxPrice') || initialMaxPrice);
     const rating = Number(searchParams.get('rating') || 0);
@@ -42,7 +44,6 @@ export default function HomePage() {
 
     let tempProducts = [...allProducts];
 
-    // Apply search term
     if (currentFilters.searchTerm) {
       tempProducts = tempProducts.filter(product =>
         product.name.toLowerCase().includes(currentFilters.searchTerm) ||
@@ -52,7 +53,6 @@ export default function HomePage() {
       );
     }
     
-    // Apply filters
     if (currentFilters.categories.length > 0) {
       tempProducts = tempProducts.filter(p => currentFilters.categories.includes(p.category));
     }
@@ -64,7 +64,6 @@ export default function HomePage() {
       tempProducts = tempProducts.filter(p => p.rating >= currentFilters.rating);
     }
 
-    // Apply sort
     switch (currentFilters.sortKey) {
       case 'price-asc':
         tempProducts.sort((a, b) => a.price - b.price);
@@ -75,7 +74,7 @@ export default function HomePage() {
       case 'rating':
         tempProducts.sort((a, b) => b.rating - a.rating);
         break;
-      case 'popularity': // Default sort (can be a mix of rating and reviewsCount or just by order)
+      case 'popularity': 
       default:
         tempProducts.sort((a, b) => (b.rating * b.reviewsCount) - (a.rating * a.reviewsCount));
         break;
@@ -89,14 +88,32 @@ export default function HomePage() {
   const uniqueBrands = useMemo(() => [...new Set(allProducts.map(p => p.brand))], [allProducts]);
   const maxProductPrice = useMemo(() => Math.max(...allProducts.map(p => p.price), 0), [allProducts]);
 
+  const dealOfTheDayProducts = useMemo(() => {
+    if (allProducts.length === 0) return [];
+    // Simple logic: pick some discounted items or highly rated ones
+    return allProducts.filter(p => p.originalPrice && p.originalPrice > p.price).slice(0, 10)
+           .concat(allProducts.filter(p => p.rating >= 4.8).slice(0, 10))
+           .sort(() => 0.5 - Math.random()) // Shuffle them a bit
+           .slice(0, 10); // Show up to 10
+  }, [allProducts]);
+
+  const bestOfElectronicsProducts = useMemo(() => {
+    if (allProducts.length === 0) return [];
+    return allProducts.filter(p => p.category.toLowerCase() === 'electronics' && p.rating >= 4.6).sort((a,b) => b.reviewsCount - a.reviewsCount).slice(0, 10);
+  }, [allProducts]);
+
+  const fashionTopDealsProducts = useMemo(() => {
+    if (allProducts.length === 0) return [];
+    return allProducts.filter(p => p.category.toLowerCase() === 'fashion' && p.originalPrice).sort((a,b) => (b.originalPrice! - b.price) - (a.originalPrice! - a.price)).slice(0, 10);
+  }, [allProducts]);
+
 
   const handleFilterChange = (filters: AppliedFilters) => {
-    // This function is mostly for FilterSortControls to inform its parent
-    // The actual filtering logic is in the useEffect above based on searchParams
+    // Logic is in useEffect based on searchParams
   };
 
   const handleSortChange = (sortKey: string) => {
-    // Same as above, logic is in useEffect
+    // Logic is in useEffect based on searchParams
   };
 
 
@@ -106,12 +123,61 @@ export default function HomePage() {
         <PromotionalBanner
           imageUrl="https://placehold.co/1200x400.png"
           altText="Big Billion Days Sale"
-          linkUrl="/sales/big-billion-days"
+          linkUrl="/sales/big-billion-days" 
           title="Big Savings Event!"
           description="Up to 70% off on electronics, fashion, and more. Shop now!"
           dataAiHint="sale event"
         />
       </div>
+
+      {/* Deal of the Day Section */}
+      {dealOfTheDayProducts.length > 0 && (
+        <section className="mb-12">
+          <Card className="shadow-lg">
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold flex items-center">
+                <Zap className="mr-2 h-7 w-7 text-accent" /> Deal of the Day
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {isLoading ? <Skeleton className="h-60 w-full" /> : <ProductGrid products={dealOfTheDayProducts} />}
+            </CardContent>
+          </Card>
+        </section>
+      )}
+
+      {/* Best of Electronics Section */}
+      {bestOfElectronicsProducts.length > 0 && (
+        <section className="mb-12">
+           <Card className="shadow-lg">
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold flex items-center">
+                <TrendingUp className="mr-2 h-7 w-7 text-primary" /> Best of Electronics
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {isLoading ? <Skeleton className="h-60 w-full" /> : <ProductGrid products={bestOfElectronicsProducts} />}
+            </CardContent>
+          </Card>
+        </section>
+      )}
+
+      {/* Fashion Top Deals Section */}
+      {fashionTopDealsProducts.length > 0 && (
+        <section className="mb-12">
+           <Card className="shadow-lg">
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold flex items-center">
+                 <Sparkles className="mr-2 h-7 w-7 text-pink-500" /> Fashion Top Deals
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {isLoading ? <Skeleton className="h-60 w-full" /> : <ProductGrid products={fashionTopDealsProducts} />}
+            </CardContent>
+          </Card>
+        </section>
+      )}
+
 
       <div className="flex flex-col md:flex-row gap-8">
         <aside className="w-full md:w-1/4 lg:w-1/5">
@@ -139,20 +205,27 @@ export default function HomePage() {
         </aside>
 
         <div className="w-full md:w-3/4 lg:w-4/5">
-          {isLoading ? (
-             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {[...Array(8)].map((_, i) => (
-                <div key={i} className="border rounded-lg p-4 space-y-3 bg-card">
-                  <Skeleton className="h-40 w-full" />
-                  <Skeleton className="h-6 w-3/4" />
-                  <Skeleton className="h-4 w-full" />
-                  <Skeleton className="h-8 w-1/2" />
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold">All Products</CardTitle>
+            </CardHeader>
+            <CardContent>
+              {isLoading ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                  {[...Array(8)].map((_, i) => (
+                    <div key={i} className="border rounded-lg p-4 space-y-3 bg-card">
+                      <Skeleton className="h-40 w-full" />
+                      <Skeleton className="h-6 w-3/4" />
+                      <Skeleton className="h-4 w-full" />
+                      <Skeleton className="h-8 w-1/2" />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          ) : (
-            <ProductGrid products={filteredProducts} />
-          )}
+              ) : (
+                <ProductGrid products={filteredProducts} />
+              )}
+            </CardContent>
+          </Card>
         </div>
       </div>
 
