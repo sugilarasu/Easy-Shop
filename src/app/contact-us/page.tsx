@@ -1,3 +1,4 @@
+
 import { Metadata } from 'next';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -7,8 +8,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Contact Us - E-Clone',
-  description: 'Get in touch with the E-Clone support team.',
+  title: 'Contact Us - CharmShop',
+  description: 'Get in touch with the CharmShop support team.',
 };
 
 export default function ContactUsPage() {
@@ -59,7 +60,7 @@ export default function ContactUsPage() {
                 <div>
                   <h4 className="font-medium">Address</h4>
                   <p className="text-muted-foreground">
-                    E-Clone Internet Private Limited,<br />
+                    CharmShop Internet Private Limited,<br />
                     Buildings Alyssa, Begonia & Clove Embassy Tech Village,<br />
                     Outer Ring Road, Devarabeesanahalli Village,<br />
                     Bengaluru, 560103, Karnataka, India
@@ -80,7 +81,7 @@ export default function ContactUsPage() {
                 <div>
                   <h4 className="font-medium">Email</h4>
                   <p className="text-muted-foreground">
-                    Support: <a href="mailto:support@eclone.example.com" className="hover:underline text-primary">support@eclone.example.com</a> (Placeholder)
+                    Support: <a href="mailto:support@charmshop.example.com" className="hover:underline text-primary">support@charmshop.example.com</a> (Placeholder)
                   </p>
                 </div>
               </div>

@@ -1,3 +1,4 @@
+
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -5,15 +6,15 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { BookOpen, Newspaper, Users } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'E-Clone Stories - E-Clone',
-  description: 'Read inspiring stories, news, and updates from the world of E-Clone.',
+  title: 'CharmShop Stories - CharmShop',
+  description: 'Read inspiring stories, news, and updates from the world of CharmShop.',
 };
 
-export default function ECloneStoriesPage() {
+export default function CharmShopStoriesPage() {
   const stories = [
     {
       id: 1,
-      title: 'Empowering Local Artisans: How E-Clone is Making a Difference',
+      title: 'Empowering Local Artisans: How CharmShop is Making a Difference',
       excerpt: 'Discover how our platform is helping small businesses and local artisans reach a wider audience and grow their enterprises.',
       imageUrl: 'https://placehold.co/600x400.png',
       dataAiHint: 'artisans community',
@@ -24,7 +25,7 @@ export default function ECloneStoriesPage() {
     {
       id: 2,
       title: 'Behind the Code: The Tech That Powers Your Seamless Shopping',
-      excerpt: 'A sneak peek into the innovative technologies and dedicated team that make your E-Clone experience smooth and secure.',
+      excerpt: 'A sneak peek into the innovative technologies and dedicated team that make your CharmShop experience smooth and secure.',
       imageUrl: 'https://placehold.co/600x400.png',
       dataAiHint: 'technology code',
       category: 'Technology',
@@ -34,7 +35,7 @@ export default function ECloneStoriesPage() {
     {
       id: 3,
       title: 'Our Commitment to Sustainability: Greener Shopping, Brighter Future',
-      excerpt: 'Learn about E-Clone\'s initiatives to reduce environmental impact and promote sustainable practices in e-commerce.',
+      excerpt: 'Learn about CharmShop\'s initiatives to reduce environmental impact and promote sustainable practices in e-commerce.',
       imageUrl: 'https://placehold.co/600x400.png',
       dataAiHint: 'sustainability environment',
       category: 'Sustainability',
@@ -49,9 +50,9 @@ export default function ECloneStoriesPage() {
         <div className="inline-flex items-center justify-center bg-primary text-primary-foreground rounded-full p-3 mb-4">
           <BookOpen className="h-12 w-12" />
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-foreground">E-Clone Stories</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-foreground">CharmShop Stories</h1>
         <p className="text-lg md:text-xl text-muted-foreground mt-2 max-w-2xl mx-auto">
-          Insights, updates, and inspiring narratives from the heart of E-Clone.
+          Insights, updates, and inspiring narratives from the heart of CharmShop.
         </p>
       </header>
 

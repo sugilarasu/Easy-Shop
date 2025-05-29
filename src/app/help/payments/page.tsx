@@ -1,11 +1,12 @@
+
 import { Metadata } from 'next';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CreditCard, ShieldCheck, Smartphone } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Payments - Help Center - E-Clone',
-  description: 'Find information about payment methods, security, and troubleshooting on E-Clone.',
+  title: 'Payments - Help Center - CharmShop',
+  description: 'Find information about payment methods, security, and troubleshooting on CharmShop.',
 };
 
 export default function PaymentsHelpPage() {
@@ -18,7 +19,7 @@ export default function PaymentsHelpPage() {
           </div>
           <CardTitle className="text-3xl md:text-4xl font-bold">Payments Help</CardTitle>
           <CardDescription className="text-lg text-muted-foreground">
-            All you need to know about making payments on E-Clone.
+            All you need to know about making payments on CharmShop.
           </CardDescription>
         </CardHeader>
         <CardContent className="p-6 md:p-8">
@@ -32,7 +33,7 @@ export default function PaymentsHelpPage() {
                   <li>Debit Cards</li>
                   <li>Net Banking (most major banks)</li>
                   <li>UPI (Unified Payments Interface)</li>
-                  <li>E-Clone Wallet (if applicable)</li>
+                  <li>CharmShop Wallet (if applicable)</li>
                   <li>Cash on Delivery (COD) - available for eligible orders and locations.</li>
                 </ul>
                 <p>Availability of certain payment methods may vary depending on your order or location.</p>
@@ -40,11 +41,11 @@ export default function PaymentsHelpPage() {
             </AccordionItem>
 
             <AccordionItem value="item-2">
-              <AccordionTrigger className="text-lg font-medium">Is it safe to use my card on E-Clone?</AccordionTrigger>
+              <AccordionTrigger className="text-lg font-medium">Is it safe to use my card on CharmShop?</AccordionTrigger>
               <AccordionContent className="text-base text-muted-foreground prose dark:prose-invert max-w-none">
                 <p className="flex items-center"><ShieldCheck className="h-5 w-5 mr-2 text-green-600" /> Yes, absolutely!</p>
                 <p>
-                  We take your security very seriously. All online transactions on E-Clone are processed through secure and encrypted payment gateways. 
+                  We take your security very seriously. All online transactions on CharmShop are processed through secure and encrypted payment gateways. 
                   We use industry-standard SSL (Secure Sockets Layer) technology to protect your card information. 
                   We do not store your full card details on our servers.
                 </p>
@@ -88,7 +89,7 @@ export default function PaymentsHelpPage() {
                   <li>Select UPI as your payment option at checkout.</li>
                   <li>Enter your VPA (Virtual Payment Address), e.g., yourname@bank.</li>
                   <li>Open your UPI-enabled mobile app (like Google Pay, PhonePe, Paytm, etc.).</li>
-                  <li>You will receive a payment request from E-Clone.</li>
+                  <li>You will receive a payment request from CharmShop.</li>
                   <li>Authorize the payment in your UPI app using your MPIN.</li>
                 </ol>
                 <p>Once the payment is successful, your order will be confirmed.</p>

@@ -1,3 +1,4 @@
+
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -5,32 +6,32 @@ import { Button } from '@/components/ui/button';
 import { Newspaper, Download, Mail } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Press & Media - E-Clone',
-  description: 'Find press releases, media kits, and contact information for E-Clone.',
+  title: 'Press & Media - CharmShop',
+  description: 'Find press releases, media kits, and contact information for CharmShop.',
 };
 
 export default function PressPage() {
   const pressReleases = [
     {
       id: 1,
-      title: 'E-Clone Launches New AI-Powered Recommendation Engine',
+      title: 'CharmShop Launches New AI-Powered Recommendation Engine',
       date: 'November 5, 2023',
       link: '#', // Placeholder link
-      summary: 'E-Clone today announced the launch of its advanced AI recommendation engine, promising a more personalized shopping experience for its users.'
+      summary: 'CharmShop today announced the launch of its advanced AI recommendation engine, promising a more personalized shopping experience for its users.'
     },
     {
       id: 2,
-      title: 'E-Clone Reports Record Growth in Q3 2023',
+      title: 'CharmShop Reports Record Growth in Q3 2023',
       date: 'October 18, 2023',
       link: '#',
       summary: 'The company reported a 40% increase in user acquisition and a significant rise in gross merchandise value for the third quarter.'
     },
     {
       id: 3,
-      title: 'E-Clone Expands into Grocery Delivery Service',
+      title: 'CharmShop Expands into Grocery Delivery Service',
       date: 'September 10, 2023',
       link: '#',
-      summary: 'E-Clone is set to revolutionize the online grocery market with its new rapid delivery service in major metropolitan areas.'
+      summary: 'CharmShop is set to revolutionize the online grocery market with its new rapid delivery service in major metropolitan areas.'
     }
   ];
 
@@ -43,7 +44,7 @@ export default function PressPage() {
           </div>
           <CardTitle className="text-3xl md:text-4xl font-bold">Press & Media</CardTitle>
           <CardDescription className="text-lg text-muted-foreground">
-            Stay updated with the latest news and announcements from E-Clone.
+            Stay updated with the latest news and announcements from CharmShop.
           </CardDescription>
         </CardHeader>
         <CardContent className="p-6 md:p-8">
@@ -98,7 +99,7 @@ export default function PressPage() {
                   For all media and press-related inquiries, please contact our communications team.
                 </p>
                 <Button asChild className="w-full md:w-auto bg-primary hover:bg-primary/90">
-                  <Link href="mailto:press@eclone.example.com">Contact Press Team</Link>
+                  <Link href="mailto:press@charmshop.example.com">Contact Press Team</Link>
                 </Button>
               </CardContent>
             </Card>

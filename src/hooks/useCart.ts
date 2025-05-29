@@ -1,3 +1,4 @@
+
 'use client';
 
 import type { CartItem, Product } from '@/types';
@@ -78,7 +79,7 @@ export const useCartStore = create<CartState>()(
       },
     }),
     {
-      name: 'e-clone-cart-storage',
+      name: 'charmshop-cart-storage', // Changed from e-clone-cart-storage
       storage: createJSONStorage(() => customStorage),
     }
   )

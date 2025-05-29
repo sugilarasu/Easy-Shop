@@ -1,7 +1,8 @@
+
 import ShoppingCartClient from '@/components/ShoppingCartClient';
 
 export const metadata = {
-  title: 'Your Shopping Cart - E-Clone',
+  title: 'Your Shopping Cart - CharmShop',
 };
 
 export default function CartPage() {

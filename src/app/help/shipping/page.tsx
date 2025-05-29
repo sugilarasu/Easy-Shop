@@ -1,11 +1,12 @@
+
 import { Metadata } from 'next';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Truck, MapPin, Clock, Package } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Shipping Information - Help Center - E-Clone',
-  description: 'Learn about shipping times, charges, tracking, and policies on E-Clone.',
+  title: 'Shipping Information - Help Center - CharmShop',
+  description: 'Learn about shipping times, charges, tracking, and policies on CharmShop.',
 };
 
 export default function ShippingHelpPage() {
@@ -49,9 +50,9 @@ export default function ShippingHelpPage() {
                 <p>
                   Once your order is shipped, you will receive an email and/or SMS with the tracking information, including the courier partner and tracking ID.
                 </p>
-                <p>You can also track your order from your E-Clone account:</p>
+                <p>You can also track your order from your CharmShop account:</p>
                 <ol>
-                  <li>Log in to your E-Clone account.</li>
+                  <li>Log in to your CharmShop account.</li>
                   <li>Go to &quot;My Orders&quot; section.</li>
                   <li>Select the order you wish to track.</li>
                   <li>Click on the &quot;Track Order&quot; button or link.</li>
@@ -82,7 +83,7 @@ export default function ShippingHelpPage() {
               </AccordionTrigger>
               <AccordionContent className="text-base text-muted-foreground prose dark:prose-invert max-w-none">
                 <p>
-                  Currently, E-Clone primarily ships within India. International shipping availability may depend on specific sellers or products. 
+                  Currently, CharmShop primarily ships within India. International shipping availability may depend on specific sellers or products. 
                   If international shipping is available for an item, it will be indicated on the product page or during checkout.
                 </p>
               </AccordionContent>

@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -16,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'E-Clone - Your Online Shopping Destination',
-  description: 'An e-commerce platform inspired by Flipkart, built with Next.js.',
+  title: 'CharmShop - Your Online Shopping Destination',
+  description: 'An e-commerce platform inspired by leading online retailers, built with Next.js by CharmShop.',
 };
 
 export default function RootLayout({

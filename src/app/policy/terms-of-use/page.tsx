@@ -1,10 +1,11 @@
+
 import { Metadata } from 'next';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Gavel, UserCheck, Shield, FileText } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Terms of Use - E-Clone',
-  description: 'Read the Terms of Use governing your access and use of the E-Clone platform.',
+  title: 'Terms of Use - CharmShop',
+  description: 'Read the Terms of Use governing your access and use of the CharmShop platform.',
 };
 
 export default function TermsOfUsePage() {
@@ -22,7 +23,7 @@ export default function TermsOfUsePage() {
         </CardHeader>
         <CardContent className="prose dark:prose-invert max-w-none text-lg space-y-6 p-6 md:p-8">
           <p>
-            Welcome to E-Clone! These Terms of Use (&quot;Terms&quot;) govern your access to and use of the E-Clone website, mobile applications, and services (collectively, the &quot;Platform&quot;) provided by E-Clone Internet Private Limited (&quot;E-Clone&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;). 
+            Welcome to CharmShop! These Terms of Use (&quot;Terms&quot;) govern your access to and use of the CharmShop website, mobile applications, and services (collectively, the &quot;Platform&quot;) provided by CharmShop Internet Private Limited (&quot;CharmShop&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;). 
             By accessing or using the Platform, you agree to be bound by these Terms.
           </p>
 
@@ -50,7 +51,7 @@ export default function TermsOfUsePage() {
           <section>
             <h2 className="text-2xl font-semibold">3. Product Listings and Purchases</h2>
             <p>
-              E-Clone acts as a marketplace for sellers to list and sell their products. While we strive to ensure the accuracy of product information, we do not warrant that product descriptions, pricing, or other content is accurate, complete, reliable, current, or error-free. 
+              CharmShop acts as a marketplace for sellers to list and sell their products. While we strive to ensure the accuracy of product information, we do not warrant that product descriptions, pricing, or other content is accurate, complete, reliable, current, or error-free. 
               All purchases made through the Platform are subject to our <a href="/policy/return-policy" className="text-primary hover:underline">Return Policy</a> and other applicable policies.
             </p>
           </section>
@@ -58,14 +59,14 @@ export default function TermsOfUsePage() {
           <section>
             <h2 className="text-2xl font-semibold">4. Intellectual Property</h2>
             <p>
-              The Platform and its entire contents, features, and functionality (including but not limited to all information, software, text, displays, images, video, and audio, and the design, selection, and arrangement thereof) are owned by E-Clone, its licensors, or other providers of such material and are protected by copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.
+              The Platform and its entire contents, features, and functionality (including but not limited to all information, software, text, displays, images, video, and audio, and the design, selection, and arrangement thereof) are owned by CharmShop, its licensors, or other providers of such material and are protected by copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.
             </p>
           </section>
 
            <section>
             <h2 className="text-2xl font-semibold">5. Limitation of Liability</h2>
             <p>
-              To the fullest extent permitted by applicable law, E-Clone shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses, resulting from (a) your access to or use of or inability to access or use the Platform; (b) any conduct or content of any third party on the Platform; or (c) unauthorized access, use, or alteration of your transmissions or content.
+              To the fullest extent permitted by applicable law, CharmShop shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses, resulting from (a) your access to or use of or inability to access or use the Platform; (b) any conduct or content of any third party on the Platform; or (c) unauthorized access, use, or alteration of your transmissions or content.
             </p>
           </section>
           

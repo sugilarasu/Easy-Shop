@@ -1,10 +1,11 @@
+
 import { Metadata } from 'next';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ShieldCheck, Lock, Key, Fingerprint } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Security - E-Clone',
-  description: 'Learn about the security measures E-Clone takes to protect your data and transactions.',
+  title: 'Security - CharmShop',
+  description: 'Learn about the security measures CharmShop takes to protect your data and transactions.',
 };
 
 export default function SecurityPolicyPage() {
@@ -15,20 +16,20 @@ export default function SecurityPolicyPage() {
           <div className="inline-flex items-center justify-center bg-primary text-primary-foreground rounded-full p-3 mb-4">
             <ShieldCheck className="h-10 w-10" />
           </div>
-          <CardTitle className="text-3xl md:text-4xl font-bold">Security at E-Clone</CardTitle>
+          <CardTitle className="text-3xl md:text-4xl font-bold">Security at CharmShop</CardTitle>
           <CardDescription className="text-lg text-muted-foreground">
             Your trust and safety are our top priorities.
           </CardDescription>
         </CardHeader>
         <CardContent className="prose dark:prose-invert max-w-none text-lg space-y-8 p-6 md:p-8">
           <p>
-            At E-Clone, we are committed to ensuring a secure shopping environment for all our users. We implement a variety of security measures to protect your personal information and transaction data.
+            At CharmShop, we are committed to ensuring a secure shopping environment for all our users. We implement a variety of security measures to protect your personal information and transaction data.
           </p>
 
           <section>
             <h2 className="text-2xl font-semibold flex items-center"><Lock className="h-6 w-6 mr-2 text-primary" />Secure Transactions</h2>
             <p>
-              All online payment transactions on E-Clone are processed through secure payment gateways that use industry-standard encryption technologies like SSL (Secure Sockets Layer). 
+              All online payment transactions on CharmShop are processed through secure payment gateways that use industry-standard encryption technologies like SSL (Secure Sockets Layer). 
               This means your sensitive payment information (such as credit card details) is encrypted during transmission, protecting it from unauthorized access. We do not store your full credit card numbers on our servers.
             </p>
           </section>
@@ -36,11 +37,11 @@ export default function SecurityPolicyPage() {
           <section>
             <h2 className="text-2xl font-semibold flex items-center"><Key className="h-6 w-6 mr-2 text-primary" />Account Protection</h2>
             <p>
-              We encourage you to create a strong, unique password for your E-Clone account and keep it confidential. Avoid using easily guessable passwords or sharing your login credentials with anyone.
-              E-Clone may offer features like two-factor authentication (2FA) for an added layer of security on your account.
+              We encourage you to create a strong, unique password for your CharmShop account and keep it confidential. Avoid using easily guessable passwords or sharing your login credentials with anyone.
+              CharmShop may offer features like two-factor authentication (2FA) for an added layer of security on your account.
             </p>
             <p>
-              Be wary of phishing attempts. E-Clone will never ask for your password, OTP (One-Time Password), or sensitive financial information via unsolicited email or phone calls. Always ensure you are on the official E-Clone website or app before entering your credentials.
+              Be wary of phishing attempts. CharmShop will never ask for your password, OTP (One-Time Password), or sensitive financial information via unsolicited email or phone calls. Always ensure you are on the official CharmShop website or app before entering your credentials.
             </p>
           </section>
           
@@ -59,7 +60,7 @@ export default function SecurityPolicyPage() {
               <li>Always use a secure internet connection when shopping online.</li>
               <li>Keep your device operating system and browser updated.</li>
               <li>Regularly review your account activity and bank statements for any suspicious transactions.</li>
-              <li>Log out of your E-Clone account when using a shared computer.</li>
+              <li>Log out of your CharmShop account when using a shared computer.</li>
               <li>Report any suspicious activity or security concerns to us immediately.</li>
             </ul>
           </section>

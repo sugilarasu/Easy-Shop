@@ -1,3 +1,4 @@
+
 import ProductGrid from '@/components/ProductGrid';
 import { getAllProducts } from '@/lib/products';
 import type { Metadata } from 'next';
@@ -5,8 +6,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Lamp } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Home & Decor - E-Clone',
-  description: 'Find furniture, lighting, and decor items to beautify your home at E-Clone.',
+  title: 'Home & Decor - CharmShop',
+  description: 'Find furniture, lighting, and decor items to beautify your home at CharmShop.',
 };
 
 export default function HomeDecorPage() {

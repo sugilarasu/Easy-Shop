@@ -1,3 +1,4 @@
+
 import ProductGrid from '@/components/ProductGrid';
 import { getAllProducts } from '@/lib/products';
 import type { Metadata } from 'next';
@@ -5,8 +6,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Plane } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Travel - E-Clone',
-  description: 'Book flights, hotels, and holiday packages at E-Clone.',
+  title: 'Travel - CharmShop',
+  description: 'Book flights, hotels, and holiday packages at CharmShop.',
 };
 
 export default function TravelPage() {

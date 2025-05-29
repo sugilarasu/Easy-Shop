@@ -1,3 +1,4 @@
+
 import ProductGrid from '@/components/ProductGrid';
 import { getAllProducts } from '@/lib/products';
 import type { Metadata } from 'next';
@@ -5,8 +6,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ShoppingBasket } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Grocery - E-Clone',
-  description: 'Shop for fresh groceries online at E-Clone.',
+  title: 'Grocery - CharmShop',
+  description: 'Shop for fresh groceries online at CharmShop.',
 };
 
 export default function GroceryPage() {

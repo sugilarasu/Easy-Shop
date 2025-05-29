@@ -1,3 +1,4 @@
+
 import ProductGrid from '@/components/ProductGrid';
 import { getAllProducts } from '@/lib/products';
 import type { Metadata } from 'next';
@@ -5,8 +6,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { HardDrive } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Electronics - E-Clone',
-  description: 'Shop for TVs, laptops, audio devices, and more electronics at E-Clone.',
+  title: 'Electronics - CharmShop',
+  description: 'Shop for TVs, laptops, audio devices, and more electronics at CharmShop.',
 };
 
 export default function ElectronicsPage() {

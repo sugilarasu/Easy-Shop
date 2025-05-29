@@ -1,10 +1,11 @@
+
 import { Metadata } from 'next';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { FileText, PackageCheck, Clock, AlertTriangle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Return Policy - E-Clone',
-  description: 'Read the official E-Clone return policy for products purchased on our platform.',
+  title: 'Return Policy - CharmShop',
+  description: 'Read the official CharmShop return policy for products purchased on our platform.',
 };
 
 export default function ReturnPolicyPage() {
@@ -22,13 +23,13 @@ export default function ReturnPolicyPage() {
         </CardHeader>
         <CardContent className="prose dark:prose-invert max-w-none text-lg space-y-6 p-6 md:p-8">
           <p>
-            At E-Clone, we strive to ensure your satisfaction with every purchase. This policy outlines the conditions under which returns are accepted and processed.
+            At CharmShop, we strive to ensure your satisfaction with every purchase. This policy outlines the conditions under which returns are accepted and processed.
           </p>
 
           <section>
             <h2 className="text-2xl font-semibold flex items-center"><Clock className="h-6 w-6 mr-2 text-primary" />Return Window</h2>
             <p>
-              Most items purchased from E-Clone are returnable within a specified return window, which is typically <strong>7 to 30 days</strong> from the date of delivery. 
+              Most items purchased from CharmShop are returnable within a specified return window, which is typically <strong>7 to 30 days</strong> from the date of delivery. 
               The exact return window for each product is mentioned on its respective product page. Please check this information before making a purchase.
             </p>
           </section>
@@ -74,15 +75,15 @@ export default function ReturnPolicyPage() {
           <section>
             <h2 className="text-2xl font-semibold">Return Process & Refunds</h2>
             <p>
-              To initiate a return, please visit the &quot;My Orders&quot; section of your E-Clone account. 
+              To initiate a return, please visit the &quot;My Orders&quot; section of your CharmShop account. 
               Once your return request is approved and the item is received and verified by the seller, your refund will be processed. 
-              Refunds are typically credited back to the original payment method. For Cash on Delivery orders, refunds may be processed via bank transfer or to your E-Clone wallet.
+              Refunds are typically credited back to the original payment method. For Cash on Delivery orders, refunds may be processed via bank transfer or to your CharmShop wallet.
               Please refer to our <a href="/help/cancellation-returns" className="text-primary hover:underline">Cancellation & Returns help page</a> for more details on the process and timelines.
             </p>
           </section>
 
           <p className="mt-8">
-            E-Clone reserves the right to amend this Return Policy at any time. The policy applicable to your purchase will be the one in effect at the time of your order.
+            CharmShop reserves the right to amend this Return Policy at any time. The policy applicable to your purchase will be the one in effect at the time of your order.
             If you have any questions, please <a href="/contact-us" className="text-primary hover:underline">contact our support team</a>.
           </p>
         </CardContent>

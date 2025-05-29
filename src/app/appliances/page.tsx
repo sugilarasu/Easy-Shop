@@ -1,3 +1,4 @@
+
 import ProductGrid from '@/components/ProductGrid';
 import { getAllProducts } from '@/lib/products';
 import type { Metadata } from 'next';
@@ -5,8 +6,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Refrigerator } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Appliances - E-Clone',
-  description: 'Shop for kitchen and home appliances at E-Clone.',
+  title: 'Appliances - CharmShop',
+  description: 'Shop for kitchen and home appliances at CharmShop.',
 };
 
 export default function AppliancesPage() {

@@ -1,10 +1,11 @@
+
 import { Metadata } from 'next';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Users, Target, Eye } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About Us - E-Clone',
-  description: 'Learn more about E-Clone, our mission, vision, and values.',
+  title: 'About Us - CharmShop',
+  description: 'Learn more about CharmShop, our mission, vision, and values.',
 };
 
 export default function AboutUsPage() {
@@ -15,16 +16,16 @@ export default function AboutUsPage() {
           <div className="inline-flex items-center justify-center bg-primary text-primary-foreground rounded-full p-3 mb-4">
             <Users className="h-10 w-10" />
           </div>
-          <CardTitle className="text-3xl md:text-4xl font-bold">About E-Clone</CardTitle>
+          <CardTitle className="text-3xl md:text-4xl font-bold">About CharmShop</CardTitle>
           <CardDescription className="text-lg text-muted-foreground">
             Your trusted partner in online shopping.
           </CardDescription>
         </CardHeader>
         <CardContent className="prose dark:prose-invert max-w-none text-lg space-y-6 p-6 md:p-8">
           <p>
-            Welcome to E-Clone! We are a passionate team dedicated to revolutionizing your online shopping
+            Welcome to CharmShop! We are a passionate team dedicated to revolutionizing your online shopping
             experience. Inspired by the convenience and variety of leading e-commerce platforms, 
-            E-Clone aims to provide a seamless, enjoyable, and secure platform for all your needs.
+            CharmShop aims to provide a seamless, enjoyable, and secure platform for all your needs.
           </p>
           
           <div className="grid md:grid-cols-2 gap-8 my-8">
@@ -53,14 +54,14 @@ export default function AboutUsPage() {
               <CardContent>
                 <p>
                   To become a leading e-commerce destination known for innovation, customer trust, and 
-                  a commitment to sustainable practices. We envision a future where E-Clone is synonymous 
+                  a commitment to sustainable practices. We envision a future where CharmShop is synonymous 
                   with a superior online retail experience.
                 </p>
               </CardContent>
             </Card>
           </div>
 
-          <h3 className="text-2xl font-semibold mt-8">Why Choose E-Clone?</h3>
+          <h3 className="text-2xl font-semibold mt-8">Why Choose CharmShop?</h3>
           <ul className="list-disc pl-6 space-y-2">
             <li><strong>Wide Selection:</strong> From electronics to fashion, groceries to travel, find everything you need in one place.</li>
             <li><strong>Quality Assurance:</strong> We partner with trusted brands and sellers to ensure product quality.</li>
@@ -68,7 +69,7 @@ export default function AboutUsPage() {
             <li><strong>Customer Focus:</strong> Our dedicated support team is here to assist you every step of the way.</li>
           </ul>
           <p>
-            Thank you for choosing E-Clone. We look forward to serving you!
+            Thank you for choosing CharmShop. We look forward to serving you!
           </p>
         </CardContent>
       </Card>

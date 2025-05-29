@@ -1,3 +1,4 @@
+
 import ProductGrid from '@/components/ProductGrid';
 import { getAllProducts } from '@/lib/products';
 import type { Metadata } from 'next';
@@ -5,8 +6,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Smartphone } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Mobiles - E-Clone',
-  description: 'Find the latest smartphones and mobile accessories at E-Clone.',
+  title: 'Mobiles - CharmShop',
+  description: 'Find the latest smartphones and mobile accessories at CharmShop.',
 };
 
 export default function MobilesPage() {

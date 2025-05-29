@@ -1,3 +1,4 @@
+
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -6,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
 export const metadata: Metadata = {
-  title: 'Login - E-Clone',
+  title: 'Login - CharmShop',
 };
 
 export default function LoginPage() {
@@ -14,7 +15,7 @@ export default function LoginPage() {
     <div className="container mx-auto flex min-h-[calc(100vh-10rem)] items-center justify-center px-4 py-12 md:px-6">
       <Card className="w-full max-w-md shadow-xl">
         <CardHeader className="space-y-1 text-center">
-          <CardTitle className="text-2xl font-bold">Login to E-Clone</CardTitle>
+          <CardTitle className="text-2xl font-bold">Login to CharmShop</CardTitle>
           <CardDescription>Enter your email below to login to your account</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">

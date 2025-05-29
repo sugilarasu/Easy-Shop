@@ -1,11 +1,12 @@
+
 import { Metadata } from 'next';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Ban, Undo, FileText } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Cancellation & Returns - Help Center - E-Clone',
-  description: 'Understand the process for order cancellations, returns, and refunds on E-Clone.',
+  title: 'Cancellation & Returns - Help Center - CharmShop',
+  description: 'Understand the process for order cancellations, returns, and refunds on CharmShop.',
 };
 
 export default function CancellationReturnsHelpPage() {
@@ -32,7 +33,7 @@ export default function CancellationReturnsHelpPage() {
                   You can cancel your order if it has not yet been shipped. To cancel an order:
                 </p>
                 <ol>
-                  <li>Log in to your E-Clone account.</li>
+                  <li>Log in to your CharmShop account.</li>
                   <li>Go to the &quot;My Orders&quot; section.</li>
                   <li>Find the order you wish to cancel.</li>
                   <li>If the order is eligible for cancellation, you will see a &quot;Cancel Order&quot; button or option.</li>
@@ -68,7 +69,7 @@ export default function CancellationReturnsHelpPage() {
               <AccordionContent className="text-base text-muted-foreground prose dark:prose-invert max-w-none">
                 <p>To initiate a return:</p>
                 <ol>
-                  <li>Log in to your E-Clone account.</li>
+                  <li>Log in to your CharmShop account.</li>
                   <li>Go to the &quot;My Orders&quot; section.</li>
                   <li>Find the order containing the item you wish to return.</li>
                   <li>Select the &quot;Return Item&quot; or similar option.</li>
@@ -90,8 +91,8 @@ export default function CancellationReturnsHelpPage() {
                 <p>The time taken for the refund to reflect in your account depends on the payment method:</p>
                 <ul>
                   <li><strong>Credit/Debit Card, Net Banking, UPI:</strong> Typically 5-7 business days after the refund is processed.</li>
-                  <li><strong>E-Clone Wallet:</strong> Usually instant or within 24 hours.</li>
-                  <li><strong>Cash on Delivery:</strong> Refunds may be processed via bank transfer (NEFT) or to your E-Clone Wallet, which might take 3-5 business days after providing necessary details.</li>
+                  <li><strong>CharmShop Wallet:</strong> Usually instant or within 24 hours.</li>
+                  <li><strong>Cash on Delivery:</strong> Refunds may be processed via bank transfer (NEFT) or to your CharmShop Wallet, which might take 3-5 business days after providing necessary details.</li>
                 </ul>
                 <p>You will be notified via email or SMS once the refund is processed.</p>
               </AccordionContent>

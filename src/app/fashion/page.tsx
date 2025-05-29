@@ -1,3 +1,4 @@
+
 import ProductGrid from '@/components/ProductGrid';
 import { getAllProducts } from '@/lib/products';
 import type { Metadata } from 'next';
@@ -5,8 +6,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Shirt } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Fashion - E-Clone',
-  description: 'Discover the latest trends in clothing, footwear, and accessories at E-Clone.',
+  title: 'Fashion - CharmShop',
+  description: 'Discover the latest trends in clothing, footwear, and accessories at CharmShop.',
 };
 
 export default function FashionPage() {
