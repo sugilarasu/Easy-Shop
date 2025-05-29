@@ -1,18 +1,21 @@
+
 'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/hooks/useCart';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import QuantitySelector from './QuantitySelector';
-import { Trash2, ShoppingBag } from 'lucide-react';
+import { Trash2, ShoppingBag, CheckCircle } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/hooks/use-toast';
 
 const ShoppingCartClient: React.FC = () => {
   const { items, removeItem, updateItemQuantity, getTotalPrice, clearCart, getItemCount } = useCartStore();
   const { toast } = useToast();
+  const router = useRouter();
 
   if (items.length === 0) {
     return (
@@ -41,6 +44,24 @@ const ShoppingCartClient: React.FC = () => {
       title: "Cart Cleared",
       description: "Your shopping cart has been emptied.",
     });
+  };
+
+  const handleProceedToCheckout = () => {
+    // In a real app, this would involve payment processing, order creation, etc.
+    // For this demo, we'll simulate a successful order.
+    clearCart();
+    toast({
+      title: "Order Placed!",
+      description: "Thank you for your purchase. Your order has been successfully placed.",
+      variant: "default", // Explicitly setting to default, can be success if you have a variant
+      action: (
+        <div className="flex items-center text-green-500">
+          <CheckCircle className="h-5 w-5 mr-2" />
+          Success
+        </div>
+      )
+    });
+    router.push('/checkout/success');
   };
 
   return (
@@ -107,8 +128,13 @@ const ShoppingCartClient: React.FC = () => {
             </div>
           </CardContent>
           <CardFooter>
-            <Button size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" disabled>
-              Proceed to Checkout (Disabled)
+            <Button 
+              size="lg" 
+              className="w-full bg-accent hover:bg-accent/90 text-accent-foreground"
+              onClick={handleProceedToCheckout}
+              disabled={items.length === 0}
+            >
+              Proceed to Checkout
             </Button>
           </CardFooter>
         </Card>
