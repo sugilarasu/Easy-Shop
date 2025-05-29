@@ -2,8 +2,8 @@
 import Link from 'next/link';
 import { Package2 } from 'lucide-react';
 import SearchBar from '@/components/SearchBar';
-import { Button } from '@/components/ui/button';
 import { HeaderCartIcon } from './HeaderCartIcon';
+import { AuthNavMenu } from './AuthNavMenu'; // Import the new component
 
 const Header = () => {
   return (
@@ -18,9 +18,8 @@ const Header = () => {
           <SearchBar />
         </div>
 
-        <nav className="flex items-center gap-4">
-          {/* Placeholder for login/user actions, not part of current scope */}
-          {/* <Button variant="ghost" className="text-primary-foreground hover:bg-primary/80 hover:text-primary-foreground">Login</Button> */}
+        <nav className="flex items-center gap-2 md:gap-4">
+          <AuthNavMenu /> {/* Use the new AuthNavMenu component */}
           <HeaderCartIcon />
         </nav>
       </div>

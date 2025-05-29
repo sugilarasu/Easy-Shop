@@ -2,42 +2,64 @@
 'use client';
 
 import { useState } from 'react';
-import { Metadata } from 'next';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
-
-// export const metadata: Metadata = { // Cannot use metadata in client component
-//   title: 'Login - CharmShop',
-// };
+import { useAuthStore } from '@/hooks/useAuth';
+import { useToast } from '@/hooks/use-toast';
 
 export default function LoginPage() {
+  const router = useRouter();
+  const { loginUser } = useAuthStore();
+  const { toast } = useToast();
+
   const [step, setStep] = useState(1); // 1 for details, 2 for OTP
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [otp, setOtp] = useState('');
-  const [isOtpSent, setIsOtpSent] = useState(false);
 
   const handleSendOtp = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!name || !age || !email || !phone) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all personal details.",
+        variant: "destructive",
+      });
+      return;
+    }
     // Placeholder: In a real app, send OTP to `phone`
     console.log('Sending OTP to:', phone);
-    setIsOtpSent(true);
-    // Simulate OTP sending and move to OTP step or show OTP field
-    // For demo, we'll just enable OTP input and change button text
-    setStep(2); // Or manage OTP input visibility differently
+    toast({
+      title: "OTP Sent (Simulated)",
+      description: `An OTP has been sent to ${phone}. (This is a simulation)`,
+    });
+    setStep(2);
   };
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Placeholder: In a real app, verify OTP and log in
-    console.log('Logging in with OTP:', otp, { name, age, email, phone });
-    alert('Login functionality (including OTP verification) is not implemented in this demo.');
+    // Placeholder: In a real app, verify OTP
+    if (otp === '123456') { // Simulate OTP verification
+      loginUser({ name, age, email, phone });
+      toast({
+        title: "Login Successful",
+        description: `Welcome back, ${name}!`,
+      });
+      router.push('/profile'); // Redirect to profile page or homepage
+    } else {
+      toast({
+        title: "Login Failed",
+        description: "Invalid OTP. Please try again. (Hint: try 123456)",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -46,7 +68,7 @@ export default function LoginPage() {
         <CardHeader className="space-y-1 text-center">
           <CardTitle className="text-2xl font-bold">Login to CharmShop</CardTitle>
           <CardDescription>
-            {step === 1 ? 'Enter your details to proceed.' : 'Enter the OTP sent to your phone.'}
+            {step === 1 ? 'Enter your details to proceed.' : `Enter the OTP sent to ${phone}.`}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -77,15 +99,15 @@ export default function LoginPage() {
           {step === 2 && (
             <form onSubmit={handleLogin} className="space-y-4">
                <div className="space-y-2">
-                <p className="text-sm text-muted-foreground">An OTP has been sent to {phone}.</p>
+                <p className="text-sm text-muted-foreground">An OTP has been sent to {phone}. (Simulated: try 123456)</p>
                 <Label htmlFor="otp">Enter OTP</Label>
                 <Input id="otp" type="text" placeholder="123456" value={otp} onChange={(e) => setOtp(e.target.value)} required maxLength={6} />
               </div>
               <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
                 Login
               </Button>
-              <Button variant="link" onClick={() => { setStep(1); setIsOtpSent(false); setOtp(''); }} className="w-full">
-                Change Phone Number
+              <Button variant="link" onClick={() => { setStep(1); setOtp(''); }} className="w-full">
+                Change Details / Resend OTP
               </Button>
             </form>
           )}
@@ -97,7 +119,7 @@ export default function LoginPage() {
         </CardContent>
         <CardFooter className="text-center text-sm">
           Don&apos;t have an account?{' '}
-          <Link href="#" className="underline hover:text-primary" onClick={(e) => { e.preventDefault(); alert('Sign up not implemented.');}}>
+          <Link href="#" className="underline hover:text-primary" onClick={(e) => { e.preventDefault(); alert('Sign up not implemented. Please use the login flow.');}}>
             Sign up
           </Link>
         </CardFooter>
