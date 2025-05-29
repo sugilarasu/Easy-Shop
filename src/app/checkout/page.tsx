@@ -117,7 +117,7 @@ export default function CheckoutPage() {
                       <FormItem>
                         <FormLabel>Phone Number</FormLabel>
                         <FormControl>
-                          <Input type="tel" placeholder="+1234567890" {...field} />
+                          <Input type="tel" placeholder="+911234567890" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -162,7 +162,7 @@ export default function CheckoutPage() {
                       <FormItem>
                         <FormLabel>City</FormLabel>
                         <FormControl>
-                          <Input placeholder="New York" {...field} />
+                          <Input placeholder="Mumbai" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -175,7 +175,7 @@ export default function CheckoutPage() {
                       <FormItem>
                         <FormLabel>Postal Code</FormLabel>
                         <FormControl>
-                          <Input placeholder="10001" {...field} />
+                          <Input placeholder="400001" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -188,7 +188,7 @@ export default function CheckoutPage() {
                       <FormItem>
                         <FormLabel>Country</FormLabel>
                         <FormControl>
-                          <Input placeholder="United States" {...field} />
+                          <Input placeholder="India" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -197,7 +197,7 @@ export default function CheckoutPage() {
                 </div>
               </div>
                <div className="border-t pt-4 mt-6">
-                <h3 className="text-lg font-semibold">Order Total: <span className="text-primary">${getTotalPrice().toFixed(2)}</span></h3>
+                <h3 className="text-lg font-semibold">Order Total: <span className="text-primary">₹{getTotalPrice().toFixed(2)}</span></h3>
               </div>
             </CardContent>
             <CardFooter>
@@ -211,3 +211,5 @@ export default function CheckoutPage() {
     </div>
   );
 }
+
+    

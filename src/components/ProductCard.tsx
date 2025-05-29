@@ -45,11 +45,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </CardDescription>
           <div className="flex items-center justify-between mb-2">
             <p className="text-xl font-bold text-foreground">
-              ${product.price.toFixed(2)}
+              ₹{product.price.toFixed(2)}
             </p>
             {product.originalPrice && (
               <p className="text-sm text-muted-foreground line-through">
-                ${product.originalPrice.toFixed(2)}
+                ₹{product.originalPrice.toFixed(2)}
               </p>
             )}
           </div>
@@ -69,3 +69,5 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 };
 
 export default ProductCard;
+
+    

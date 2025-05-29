@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -157,7 +158,7 @@ const ProductRecommendations: React.FC = () => {
                     </div>
                     <div className="p-3">
                       <h4 className="font-medium text-sm truncate group-hover:text-primary">{product.name}</h4>
-                      <p className="text-xs text-muted-foreground">${product.price.toFixed(2)}</p>
+                      <p className="text-xs text-muted-foreground">₹{product.price.toFixed(2)}</p>
                     </div>
                   </Card>
                 </a>
@@ -171,3 +172,5 @@ const ProductRecommendations: React.FC = () => {
 };
 
 export default ProductRecommendations;
+
+    

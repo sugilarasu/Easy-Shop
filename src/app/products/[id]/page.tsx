@@ -77,10 +77,10 @@ const ProductDetailsPage = ({ params }: ProductDetailsPageProps) => {
           </div>
           
           <div className="space-y-2">
-            <p className="text-3xl font-bold text-primary">${product.price.toFixed(2)}</p>
+            <p className="text-3xl font-bold text-primary">₹{product.price.toFixed(2)}</p>
             {product.originalPrice && (
               <p className="text-lg text-muted-foreground line-through">
-                ${product.originalPrice.toFixed(2)}
+                ₹{product.originalPrice.toFixed(2)}
               </p>
             )}
           </div>
@@ -165,3 +165,5 @@ const ProductDetailsPage = ({ params }: ProductDetailsPageProps) => {
 };
 
 export default ProductDetailsPage;
+
+    

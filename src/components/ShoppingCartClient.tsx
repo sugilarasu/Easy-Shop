@@ -71,7 +71,7 @@ const ShoppingCartClient: React.FC = () => {
                 <h3 className="text-lg font-semibold">{item.name}</h3>
               </Link>
               <p className="text-sm text-muted-foreground">{item.brand} - {item.category}</p>
-              <p className="text-lg font-semibold text-primary">${item.price.toFixed(2)}</p>
+              <p className="text-lg font-semibold text-primary">₹{item.price.toFixed(2)}</p>
             </div>
             <div className="flex flex-col items-end justify-between gap-2 md:gap-0">
               <QuantitySelector
@@ -101,7 +101,7 @@ const ShoppingCartClient: React.FC = () => {
           <CardContent className="space-y-4">
             <div className="flex justify-between">
               <span>Subtotal ({getItemCount()} items)</span>
-              <span>${getTotalPrice().toFixed(2)}</span>
+              <span>₹{getTotalPrice().toFixed(2)}</span>
             </div>
             <div className="flex justify-between">
               <span>Shipping</span>
@@ -110,7 +110,7 @@ const ShoppingCartClient: React.FC = () => {
             <Separator />
             <div className="flex justify-between font-bold text-lg">
               <span>Total</span>
-              <span>${getTotalPrice().toFixed(2)}</span>
+              <span>₹{getTotalPrice().toFixed(2)}</span>
             </div>
           </CardContent>
           <CardFooter>
@@ -133,3 +133,5 @@ const ShoppingCartClient: React.FC = () => {
 };
 
 export default ShoppingCartClient;
+
+    
