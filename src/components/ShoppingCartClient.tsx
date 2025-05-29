@@ -47,21 +47,7 @@ const ShoppingCartClient: React.FC = () => {
   };
 
   const handleProceedToCheckout = () => {
-    // In a real app, this would involve payment processing, order creation, etc.
-    // For this demo, we'll simulate a successful order.
-    clearCart();
-    toast({
-      title: "Order Placed!",
-      description: "Thank you for your purchase. Your order has been successfully placed.",
-      variant: "default", // Explicitly setting to default, can be success if you have a variant
-      action: (
-        <div className="flex items-center text-green-500">
-          <CheckCircle className="h-5 w-5 mr-2" />
-          Success
-        </div>
-      )
-    });
-    router.push('/checkout/success');
+    router.push('/checkout');
   };
 
   return (
@@ -78,7 +64,7 @@ const ShoppingCartClient: React.FC = () => {
         {items.map(item => (
           <Card key={item.id} className="flex flex-col md:flex-row gap-4 p-4 shadow-sm">
             <div className="relative w-full md:w-32 h-32 aspect-square rounded-md overflow-hidden self-center md:self-start">
-              <Image src={item.imageUrl} alt={item.name} layout="fill" objectFit="cover" data-ai-hint={item.dataAiHint}/>
+              <Image src={item.imageUrl} alt={item.name} layout="fill" objectFit="cover" data-ai-hint={item.dataAiHint || 'product image'}/>
             </div>
             <div className="flex-grow space-y-2">
               <Link href={`/products/${item.id}`} className="hover:underline">
