@@ -12,6 +12,33 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { TrendingUp, Zap, Sparkles } from 'lucide-react';
 
+// Helper component for product card skeleton
+const ProductCardSkeleton = () => (
+  <div className="rounded-lg border bg-card text-card-foreground shadow-sm flex flex-col">
+    <div className="p-0 relative">
+      <Skeleton className="aspect-square w-full rounded-t-md" />
+    </div>
+    <div className="p-4 flex-grow space-y-2">
+      <Skeleton className="h-5 w-4/5" /> {/* Title */}
+      <Skeleton className="h-4 w-full" /> {/* Description line 1 */}
+      <Skeleton className="h-4 w-3/4" /> {/* Description line 2 / Price */}
+      <Skeleton className="h-4 w-1/2 mt-1" /> {/* Rating */}
+    </div>
+    <div className="p-4 pt-0">
+      <Skeleton className="h-9 w-full" /> {/* Button */}
+    </div>
+  </div>
+);
+
+const ProductGridSkeleton = ({ count = 4 }: { count?: number }) => (
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+    {[...Array(count)].map((_, i) => (
+      <ProductCardSkeleton key={i} />
+    ))}
+  </div>
+);
+
+
 export default function HomePage() {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
@@ -76,6 +103,7 @@ export default function HomePage() {
         break;
       case 'popularity': 
       default:
+        // A simple popularity sort might be based on reviewsCount and rating
         tempProducts.sort((a, b) => (b.rating * b.reviewsCount) - (a.rating * a.reviewsCount));
         break;
     }
@@ -90,11 +118,10 @@ export default function HomePage() {
 
   const dealOfTheDayProducts = useMemo(() => {
     if (allProducts.length === 0) return [];
-    // Simple logic: pick some discounted items or highly rated ones
     return allProducts.filter(p => p.originalPrice && p.originalPrice > p.price).slice(0, 10)
            .concat(allProducts.filter(p => p.rating >= 4.8).slice(0, 10))
-           .sort(() => 0.5 - Math.random()) // Shuffle them a bit
-           .slice(0, 10); // Show up to 10
+           .sort(() => 0.5 - Math.random()) 
+           .slice(0, 10); 
   }, [allProducts]);
 
   const bestOfElectronicsProducts = useMemo(() => {
@@ -131,7 +158,7 @@ export default function HomePage() {
       </div>
 
       {/* Deal of the Day Section */}
-      {dealOfTheDayProducts.length > 0 && (
+      { (isLoading || dealOfTheDayProducts.length > 0) && (
         <section className="mb-12">
           <Card className="shadow-lg">
             <CardHeader>
@@ -140,14 +167,14 @@ export default function HomePage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              {isLoading ? <Skeleton className="h-60 w-full" /> : <ProductGrid products={dealOfTheDayProducts} />}
+              {isLoading ? <ProductGridSkeleton count={5} /> : <ProductGrid products={dealOfTheDayProducts} />}
             </CardContent>
           </Card>
         </section>
       )}
 
       {/* Best of Electronics Section */}
-      {bestOfElectronicsProducts.length > 0 && (
+      { (isLoading || bestOfElectronicsProducts.length > 0) && (
         <section className="mb-12">
            <Card className="shadow-lg">
             <CardHeader>
@@ -156,14 +183,14 @@ export default function HomePage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              {isLoading ? <Skeleton className="h-60 w-full" /> : <ProductGrid products={bestOfElectronicsProducts} />}
+              {isLoading ? <ProductGridSkeleton count={5} /> : <ProductGrid products={bestOfElectronicsProducts} />}
             </CardContent>
           </Card>
         </section>
       )}
 
       {/* Fashion Top Deals Section */}
-      {fashionTopDealsProducts.length > 0 && (
+      { (isLoading || fashionTopDealsProducts.length > 0) && (
         <section className="mb-12">
            <Card className="shadow-lg">
             <CardHeader>
@@ -172,7 +199,7 @@ export default function HomePage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              {isLoading ? <Skeleton className="h-60 w-full" /> : <ProductGrid products={fashionTopDealsProducts} />}
+              {isLoading ? <ProductGridSkeleton count={5} /> : <ProductGrid products={fashionTopDealsProducts} />}
             </CardContent>
           </Card>
         </section>
@@ -181,7 +208,7 @@ export default function HomePage() {
 
       <div className="flex flex-col md:flex-row gap-8">
         <aside className="w-full md:w-1/4 lg:w-1/5">
-          {isLoading ? (
+          {isLoading && !allProducts.length ? ( // Show filter skeleton only on initial full load
             <div className="space-y-4 p-4 border rounded-lg shadow-sm bg-card">
               <Skeleton className="h-8 w-3/4" />
               {[...Array(3)].map((_, i) => (
@@ -192,35 +219,29 @@ export default function HomePage() {
                   <Skeleton className="h-4 w-3/4" />
                 </div>
               ))}
+              <Skeleton className="h-10 w-full mt-4" />
             </div>
           ) : (
-            <FilterSortControls
-              categories={uniqueCategories}
-              brands={uniqueBrands}
-              onFilterChange={handleFilterChange}
-              onSortChange={handleSortChange}
-              maxPrice={maxProductPrice}
-            />
+             allProducts.length > 0 && ( // Render filters only if products have loaded
+                <FilterSortControls
+                  categories={uniqueCategories}
+                  brands={uniqueBrands}
+                  onFilterChange={handleFilterChange}
+                  onSortChange={handleSortChange}
+                  maxPrice={maxProductPrice}
+                />
+             )
           )}
         </aside>
 
         <div className="w-full md:w-3/4 lg:w-4/5">
-          <Card>
+          <Card className="shadow-md">
             <CardHeader>
               <CardTitle className="text-2xl font-bold">All Products</CardTitle>
             </CardHeader>
             <CardContent>
-              {isLoading ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                  {[...Array(8)].map((_, i) => (
-                    <div key={i} className="border rounded-lg p-4 space-y-3 bg-card">
-                      <Skeleton className="h-40 w-full" />
-                      <Skeleton className="h-6 w-3/4" />
-                      <Skeleton className="h-4 w-full" />
-                      <Skeleton className="h-8 w-1/2" />
-                    </div>
-                  ))}
-                </div>
+              {isLoading && !filteredProducts.length ? ( // Show grid skeleton if loading and no products yet
+                <ProductGridSkeleton count={10} />
               ) : (
                 <ProductGrid products={filteredProducts} />
               )}
