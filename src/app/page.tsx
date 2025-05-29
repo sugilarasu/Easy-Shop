@@ -205,9 +205,9 @@ export default function HomePage() {
         </section>
       )}
 
-
-      <div className="flex flex-col md:flex-row gap-8">
-        <aside className="w-full md:w-1/4 lg:w-1/5">
+      <div className="space-y-8">
+        {/* Filter and Sort Controls Section */}
+        <section>
           {isLoading && !allProducts.length ? ( // Show filter skeleton only on initial full load
             <div className="space-y-4 p-4 border rounded-lg shadow-sm bg-card">
               <Skeleton className="h-8 w-3/4" />
@@ -232,9 +232,10 @@ export default function HomePage() {
                 />
              )
           )}
-        </aside>
+        </section>
 
-        <div className="w-full md:w-3/4 lg:w-4/5">
+        {/* All Products Section */}
+        <section>
           <Card className="shadow-md">
             <CardHeader>
               <CardTitle className="text-2xl font-bold">All Products</CardTitle>
@@ -247,7 +248,7 @@ export default function HomePage() {
               )}
             </CardContent>
           </Card>
-        </div>
+        </section>
       </div>
 
       <div className="mt-12">
