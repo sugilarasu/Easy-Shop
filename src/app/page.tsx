@@ -5,7 +5,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import PromotionalBanner from '@/components/PromotionalBanner';
 import ProductGrid from '@/components/ProductGrid';
-import FilterSortControls, { AppliedFilters } from '@/components/FilterSortControls';
+import CategoryNavigation from '@/components/CategoryNavigation'; // New import
 import ProductRecommendations from '@/components/ProductRecommendations';
 import { getAllProducts, Product } from '@/lib/products';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -46,7 +46,7 @@ export default function HomePage() {
   
   const searchParams = useSearchParams();
 
-  // Memoize filter values from URL
+  // Memoize filter values from URL for the product grid
   const currentFilters = useMemo(() => {
     const categories = searchParams.getAll('category') || [];
     const brands = searchParams.getAll('brand') || [];
@@ -112,9 +112,11 @@ export default function HomePage() {
 
   }, [allProducts, isLoading, currentFilters]);
 
-  const uniqueCategories = useMemo(() => [...new Set(allProducts.map(p => p.category))], [allProducts]);
-  const uniqueBrands = useMemo(() => [...new Set(allProducts.map(p => p.brand))], [allProducts]);
-  const maxProductPrice = useMemo(() => Math.max(...allProducts.map(p => p.price), 0), [allProducts]);
+  const uniqueCategories = useMemo(() => {
+    const categoryOrder = ['Mobiles', 'Electronics', 'Fashion', 'Home & Decor', 'Appliances', 'Grocery', 'Travel', 'Sports & Outdoors'];
+    const categoriesFromProducts = [...new Set(allProducts.map(p => p.category))];
+    return categoryOrder.filter(cat => categoriesFromProducts.includes(cat));
+  }, [allProducts]);
 
   const dealOfTheDayProducts = useMemo(() => {
     if (allProducts.length === 0) return [];
@@ -135,15 +137,6 @@ export default function HomePage() {
   }, [allProducts]);
 
 
-  const handleFilterChange = (filters: AppliedFilters) => {
-    // Logic is in useEffect based on searchParams
-  };
-
-  const handleSortChange = (sortKey: string) => {
-    // Logic is in useEffect based on searchParams
-  };
-
-
   return (
     <div className="container mx-auto px-4 md:px-6 py-8">
       <div className="mb-8">
@@ -157,31 +150,19 @@ export default function HomePage() {
         />
       </div>
 
-      {/* Filter and Sort Controls Section */}
+      {/* New Category Navigation Section */}
       <section className="mb-8">
-        {isLoading && !allProducts.length ? ( // Show filter skeleton only on initial full load
-          <div className="space-y-4 p-4 border rounded-lg shadow-sm bg-card">
-            <Skeleton className="h-8 w-3/4" />
-            {[...Array(3)].map((_, i) => (
-              <div key={i} className="space-y-2 pt-2">
-                <Skeleton className="h-6 w-1/2" />
-                <Skeleton className="h-4 w-full" />
-                <Skeleton className="h-4 w-full" />
-                <Skeleton className="h-4 w-3/4" />
+        {isLoading ? (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4">
+            {[...Array(8)].map((_, i) => (
+              <div key={i} className="space-y-2 flex flex-col items-center">
+                <Skeleton className="h-20 w-20 rounded-md" />
+                <Skeleton className="h-4 w-16" />
               </div>
             ))}
-            <Skeleton className="h-10 w-full mt-4" />
           </div>
         ) : (
-            allProducts.length > 0 && ( // Render filters only if products have loaded
-              <FilterSortControls
-                categories={uniqueCategories}
-                brands={uniqueBrands}
-                onFilterChange={handleFilterChange}
-                onSortChange={handleSortChange}
-                maxPrice={maxProductPrice}
-              />
-            )
+          uniqueCategories.length > 0 && <CategoryNavigation categories={uniqueCategories} />
         )}
       </section>
 
@@ -237,10 +218,13 @@ export default function HomePage() {
       <section>
         <Card className="shadow-md">
           <CardHeader>
-            <CardTitle className="text-2xl font-bold">All Products</CardTitle>
+            <CardTitle className="text-2xl font-bold">Explore All Products</CardTitle>
+            <CardContent className="text-sm text-muted-foreground p-0 pt-1">
+              Use the search bar or category navigation above to find specific items, or browse our full collection below.
+            </CardContent>
           </CardHeader>
           <CardContent>
-            {isLoading && !filteredProducts.length ? ( // Show grid skeleton if loading and no products yet
+            {isLoading && !filteredProducts.length ? ( 
               <ProductGridSkeleton count={10} />
             ) : (
               <ProductGrid products={filteredProducts} />
@@ -255,4 +239,3 @@ export default function HomePage() {
     </div>
   );
 }
-
