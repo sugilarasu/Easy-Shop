@@ -157,6 +157,34 @@ export default function HomePage() {
         />
       </div>
 
+      {/* Filter and Sort Controls Section */}
+      <section className="mb-8">
+        {isLoading && !allProducts.length ? ( // Show filter skeleton only on initial full load
+          <div className="space-y-4 p-4 border rounded-lg shadow-sm bg-card">
+            <Skeleton className="h-8 w-3/4" />
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="space-y-2 pt-2">
+                <Skeleton className="h-6 w-1/2" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-3/4" />
+              </div>
+            ))}
+            <Skeleton className="h-10 w-full mt-4" />
+          </div>
+        ) : (
+            allProducts.length > 0 && ( // Render filters only if products have loaded
+              <FilterSortControls
+                categories={uniqueCategories}
+                brands={uniqueBrands}
+                onFilterChange={handleFilterChange}
+                onSortChange={handleSortChange}
+                maxPrice={maxProductPrice}
+              />
+            )
+        )}
+      </section>
+
       {/* Deal of the Day Section */}
       { (isLoading || dealOfTheDayProducts.length > 0) && (
         <section className="mb-12">
@@ -205,51 +233,21 @@ export default function HomePage() {
         </section>
       )}
 
-      <div className="space-y-8">
-        {/* Filter and Sort Controls Section */}
-        <section>
-          {isLoading && !allProducts.length ? ( // Show filter skeleton only on initial full load
-            <div className="space-y-4 p-4 border rounded-lg shadow-sm bg-card">
-              <Skeleton className="h-8 w-3/4" />
-              {[...Array(3)].map((_, i) => (
-                <div key={i} className="space-y-2 pt-2">
-                  <Skeleton className="h-6 w-1/2" />
-                  <Skeleton className="h-4 w-full" />
-                  <Skeleton className="h-4 w-full" />
-                  <Skeleton className="h-4 w-3/4" />
-                </div>
-              ))}
-              <Skeleton className="h-10 w-full mt-4" />
-            </div>
-          ) : (
-             allProducts.length > 0 && ( // Render filters only if products have loaded
-                <FilterSortControls
-                  categories={uniqueCategories}
-                  brands={uniqueBrands}
-                  onFilterChange={handleFilterChange}
-                  onSortChange={handleSortChange}
-                  maxPrice={maxProductPrice}
-                />
-             )
-          )}
-        </section>
-
-        {/* All Products Section */}
-        <section>
-          <Card className="shadow-md">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold">All Products</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {isLoading && !filteredProducts.length ? ( // Show grid skeleton if loading and no products yet
-                <ProductGridSkeleton count={10} />
-              ) : (
-                <ProductGrid products={filteredProducts} />
-              )}
-            </CardContent>
-          </Card>
-        </section>
-      </div>
+      {/* All Products Section */}
+      <section>
+        <Card className="shadow-md">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold">All Products</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {isLoading && !filteredProducts.length ? ( // Show grid skeleton if loading and no products yet
+              <ProductGridSkeleton count={10} />
+            ) : (
+              <ProductGrid products={filteredProducts} />
+            )}
+          </CardContent>
+        </Card>
+      </section>
 
       <div className="mt-12">
         <ProductRecommendations />
@@ -257,3 +255,4 @@ export default function HomePage() {
     </div>
   );
 }
+
