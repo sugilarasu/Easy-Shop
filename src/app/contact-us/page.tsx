@@ -8,8 +8,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Contact Us - CharmShop',
-  description: 'Get in touch with the CharmShop support team.',
+  title: 'Contact Us - EasyShope',
+  description: 'Get in touch with the EasyShope support team.',
 };
 
 export default function ContactUsPage() {
@@ -60,7 +60,7 @@ export default function ContactUsPage() {
                 <div>
                   <h4 className="font-medium">Address</h4>
                   <p className="text-muted-foreground">
-                    CharmShop Internet Private Limited,<br />
+                    EasyShope Internet Private Limited,<br />
                     Buildings Alyssa, Begonia & Clove Embassy Tech Village,<br />
                     Outer Ring Road, Devarabeesanahalli Village,<br />
                     Bengaluru, 560103, Karnataka, India
@@ -81,7 +81,7 @@ export default function ContactUsPage() {
                 <div>
                   <h4 className="font-medium">Email</h4>
                   <p className="text-muted-foreground">
-                    Support: <a href="mailto:support@charmshop.example.com" className="hover:underline text-primary">support@charmshop.example.com</a> (Placeholder)
+                    Support: <a href="mailto:support@easyshope.example.com" className="hover:underline text-primary">support@easyshope.example.com</a> (Placeholder)
                   </p>
                 </div>
               </div>

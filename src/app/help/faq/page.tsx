@@ -6,8 +6,8 @@ import { HelpCircle, User, ShoppingCart, Search } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'FAQ - Help Center - CharmShop',
-  description: 'Find answers to frequently asked questions about shopping on CharmShop.',
+  title: 'FAQ - Help Center - EasyShope',
+  description: 'Find answers to frequently asked questions about shopping on EasyShope.',
 };
 
 export default function FAQPage() {
@@ -48,7 +48,7 @@ export default function FAQPage() {
               </AccordionTrigger>
               <AccordionContent className="text-base text-muted-foreground prose dark:prose-invert max-w-none">
                 <p>
-                  Creating an account on CharmShop is easy! Click on the &quot;Login&quot; or &quot;Sign Up&quot; button usually found at the top right of the page. 
+                  Creating an account on EasyShope is easy! Click on the &quot;Login&quot; or &quot;Sign Up&quot; button usually found at the top right of the page. 
                   You can sign up using your email address and creating a password, or by using your Google/Facebook account if that option is available.
                 </p>
                 <p>Having an account allows you to track orders, save addresses, manage wishlists, and enjoy a faster checkout process.</p>

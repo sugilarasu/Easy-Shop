@@ -6,8 +6,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Lamp } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Home & Decor - CharmShop',
-  description: 'Find furniture, lighting, and decor items to beautify your home at CharmShop.',
+  title: 'Home & Decor - EasyShope',
+  description: 'Find furniture, lighting, and decor items to beautify your home at EasyShope.',
 };
 
 export default function HomeDecorPage() {

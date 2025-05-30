@@ -6,8 +6,8 @@ import { Briefcase, Lightbulb, Users } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Careers - CharmShop',
-  description: 'Explore career opportunities at CharmShop and join our innovative team.',
+  title: 'Careers - EasyShope',
+  description: 'Explore career opportunities at EasyShope and join our innovative team.',
 };
 
 export default function CareersPage() {
@@ -27,12 +27,12 @@ export default function CareersPage() {
           </div>
           <CardTitle className="text-3xl md:text-5xl font-bold">Join Our Team</CardTitle>
           <CardDescription className="text-xl md:text-2xl mt-2 text-primary-foreground/90 max-w-3xl mx-auto">
-            Be a part of CharmShop and help shape the future of e-commerce. We&apos;re looking for talented individuals to grow with us.
+            Be a part of EasyShope and help shape the future of e-commerce. We&apos;re looking for talented individuals to grow with us.
           </CardDescription>
         </CardHeader>
         <CardContent className="p-6 md:p-8">
           <section className="my-8">
-            <h2 className="text-2xl md:text-3xl font-semibold text-center mb-8">Why Work at CharmShop?</h2>
+            <h2 className="text-2xl md:text-3xl font-semibold text-center mb-8">Why Work at EasyShope?</h2>
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div className="p-6 bg-card rounded-lg shadow-sm">
                 <Lightbulb className="h-12 w-12 text-primary mx-auto mb-4" />
@@ -77,7 +77,7 @@ export default function CareersPage() {
             ) : (
               <p className="text-center text-muted-foreground">
                 We don&apos;t have any open positions at the moment, but we are always looking for talent. 
-                Feel free to send your resume to <a href="mailto:careers@charmshop.example.com" className="text-primary hover:underline">careers@charmshop.example.com</a>.
+                Feel free to send your resume to <a href="mailto:careers@easyshope.example.com" className="text-primary hover:underline">careers@easyshope.example.com</a>.
               </p>
             )}
           </section>
@@ -87,7 +87,7 @@ export default function CareersPage() {
                Can&apos;t find a suitable role?
             </p>
             <Button size="lg" className="mt-2 bg-primary hover:bg-primary/90">
-              <Link href="mailto:careers@charmshop.example.com">Submit Your Resume</Link>
+              <Link href="mailto:careers@easyshope.example.com">Submit Your Resume</Link>
             </Button>
           </div>
         </CardContent>

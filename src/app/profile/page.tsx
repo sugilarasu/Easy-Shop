@@ -49,7 +49,7 @@ export default function ProfilePage() {
             <AvatarFallback><UserIcon size={48} /></AvatarFallback>
           </Avatar>
           <CardTitle className="text-3xl font-bold">{user.name}</CardTitle>
-          <CardDescription>Welcome to your CharmShop profile.</CardDescription>
+          <CardDescription>Welcome to your EasyShope profile.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div>

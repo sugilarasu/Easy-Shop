@@ -4,8 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Shield, FileLock, Users, Cookie } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy - CharmShop',
-  description: 'Understand how CharmShop collects, uses, and protects your personal information.',
+  title: 'Privacy Policy - EasyShope',
+  description: 'Understand how EasyShope collects, uses, and protects your personal information.',
 };
 
 export default function PrivacyPolicyPage() {
@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage() {
         </CardHeader>
         <CardContent className="prose dark:prose-invert max-w-none text-lg space-y-6 p-6 md:p-8">
           <p>
-            CharmShop Internet Private Limited (&quot;CharmShop&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our mobile applications, or interact with our services (collectively, the &quot;Platform&quot;).
+            EasyShope Internet Private Limited (&quot;EasyShope&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our mobile applications, or interact with our services (collectively, the &quot;Platform&quot;).
           </p>
 
           <section>
@@ -61,7 +61,7 @@ export default function PrivacyPolicyPage() {
               <li>With sellers on our marketplace to fulfill your orders.</li>
               <li>With service providers who perform functions on our behalf (e.g., payment processors, delivery partners, marketing agencies).</li>
               <li>If required by law or in response to valid legal processes.</li>
-              <li>To protect the rights, property, or safety of CharmShop, our users, or others.</li>
+              <li>To protect the rights, property, or safety of EasyShope, our users, or others.</li>
             </ul>
             <p>We do not sell your personal information to third parties.</p>
           </section>

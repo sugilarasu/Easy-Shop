@@ -66,7 +66,7 @@ export default function LoginPage() {
     <div className="container mx-auto flex min-h-[calc(100vh-10rem)] items-center justify-center px-4 py-12 md:px-6">
       <Card className="w-full max-w-md shadow-xl">
         <CardHeader className="space-y-1 text-center">
-          <CardTitle className="text-2xl font-bold">Login to CharmShop</CardTitle>
+          <CardTitle className="text-2xl font-bold">Login to EasyShope</CardTitle>
           <CardDescription>
             {step === 1 ? 'Enter your details to proceed.' : `Enter the OTP sent to ${phone}.`}
           </CardDescription>

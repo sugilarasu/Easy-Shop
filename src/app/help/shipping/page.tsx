@@ -5,8 +5,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Truck, MapPin, Clock, Package } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Shipping Information - Help Center - CharmShop',
-  description: 'Learn about shipping times, charges, tracking, and policies on CharmShop.',
+  title: 'Shipping Information - Help Center - EasyShope',
+  description: 'Learn about shipping times, charges, tracking, and policies on EasyShope.',
 };
 
 export default function ShippingHelpPage() {
@@ -50,9 +50,9 @@ export default function ShippingHelpPage() {
                 <p>
                   Once your order is shipped, you will receive an email and/or SMS with the tracking information, including the courier partner and tracking ID.
                 </p>
-                <p>You can also track your order from your CharmShop account:</p>
+                <p>You can also track your order from your EasyShope account:</p>
                 <ol>
-                  <li>Log in to your CharmShop account.</li>
+                  <li>Log in to your EasyShope account.</li>
                   <li>Go to &quot;My Orders&quot; section.</li>
                   <li>Select the order you wish to track.</li>
                   <li>Click on the &quot;Track Order&quot; button or link.</li>
@@ -83,7 +83,7 @@ export default function ShippingHelpPage() {
               </AccordionTrigger>
               <AccordionContent className="text-base text-muted-foreground prose dark:prose-invert max-w-none">
                 <p>
-                  Currently, CharmShop primarily ships within India. International shipping availability may depend on specific sellers or products. 
+                  Currently, EasyShope primarily ships within India. International shipping availability may depend on specific sellers or products. 
                   If international shipping is available for an item, it will be indicated on the product page or during checkout.
                 </p>
               </AccordionContent>

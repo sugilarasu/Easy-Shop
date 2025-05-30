@@ -4,7 +4,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { getLocalStorageItem, setLocalStorageItem } from '@/lib/localStorage';
 
-const HISTORY_KEY = 'charmshop-browsing-history'; // Changed from e-clone-browsing-history
+const HISTORY_KEY = 'easyshope-browsing-history'; // Changed from charmshop-browsing-history
 const MAX_HISTORY_ITEMS = 5;
 
 export function useBrowsingHistory() {

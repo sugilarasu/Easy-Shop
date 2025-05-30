@@ -43,7 +43,7 @@ export const useAuthStore = create<AuthState>()(
       logoutUser: () => set({ isLoggedIn: false, user: null }),
     }),
     {
-      name: 'charmshop-auth-storage',
+      name: 'easyshope-auth-storage', // Changed from charmshop-auth-storage
       storage: createJSONStorage(() => customStorage),
     }
   )

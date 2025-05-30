@@ -6,8 +6,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Shirt } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Fashion - CharmShop',
-  description: 'Discover the latest trends in clothing, footwear, and accessories at CharmShop.',
+  title: 'Fashion - EasyShope',
+  description: 'Discover the latest trends in clothing, footwear, and accessories at EasyShope.',
 };
 
 export default function FashionPage() {

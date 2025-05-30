@@ -6,8 +6,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { HardDrive } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Electronics - CharmShop',
-  description: 'Shop for TVs, laptops, audio devices, and more electronics at CharmShop.',
+  title: 'Electronics - EasyShope',
+  description: 'Shop for TVs, laptops, audio devices, and more electronics at EasyShope.',
 };
 
 export default function ElectronicsPage() {

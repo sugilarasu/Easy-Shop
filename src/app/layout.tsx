@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'CharmShop - Your Online Shopping Destination',
-  description: 'An e-commerce platform inspired by leading online retailers, built with Next.js by CharmShop.',
+  title: 'EasyShope - Your Online Shopping Destination',
+  description: 'An e-commerce platform inspired by leading online retailers, built with Next.js by EasyShope.',
 };
 
 export default function RootLayout({

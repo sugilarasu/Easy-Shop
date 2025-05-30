@@ -12,7 +12,7 @@ const Footer = () => {
               <li><Link href="/about-us" className="hover:text-primary hover:underline">About Us</Link></li>
               <li><Link href="/contact-us" className="hover:text-primary hover:underline">Contact Us</Link></li>
               <li><Link href="/careers" className="hover:text-primary hover:underline">Careers</Link></li>
-              <li><Link href="/stories" className="hover:text-primary hover:underline">CharmShop Stories</Link></li>
+              <li><Link href="/stories" className="hover:text-primary hover:underline">EasyShope Stories</Link></li>
               <li><Link href="/press" className="hover:text-primary hover:underline">Press</Link></li>
             </ul>
           </div>
@@ -50,7 +50,7 @@ const Footer = () => {
           <div className="col-span-2 lg:col-span-1">
             <h5 className="font-semibold text-foreground mb-3">Mail Us</h5>
             <address className="text-sm not-italic">
-              CharmShop Internet Private Limited,<br />
+              EasyShope Internet Private Limited,<br />
               Buildings Alyssa, Begonia &<br />
               Clove Embassy Tech Village,<br />
               Outer Ring Road, Devarabeesanahalli Village,<br />
@@ -61,7 +61,7 @@ const Footer = () => {
         </div>
         <div className="border-t pt-6 text-center">
           <p className="text-sm">
-            &copy; {new Date().getFullYear()} CharmShop. All rights reserved.
+            &copy; {new Date().getFullYear()} EasyShope. All rights reserved.
           </p>
           <p className="text-xs mt-1">
             This is a demo application for educational purposes.

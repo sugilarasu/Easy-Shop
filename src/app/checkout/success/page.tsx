@@ -6,8 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { CheckCircle, ShoppingBag } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Order Confirmed - CharmShop',
-  description: 'Your order has been successfully placed with CharmShop.',
+  title: 'Order Confirmed - EasyShope',
+  description: 'Your order has been successfully placed with EasyShope.',
 };
 
 export default function OrderSuccessPage() {
@@ -20,7 +20,7 @@ export default function OrderSuccessPage() {
           </div>
           <CardTitle className="text-3xl font-bold">Order Confirmed!</CardTitle>
           <CardDescription className="text-lg text-muted-foreground mt-2">
-            Thank you for your purchase from CharmShop.
+            Thank you for your purchase from EasyShope.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">

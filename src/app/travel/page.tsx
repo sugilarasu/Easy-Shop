@@ -6,8 +6,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Plane } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Travel - CharmShop',
-  description: 'Book flights, hotels, and holiday packages at CharmShop.',
+  title: 'Travel - EasyShope',
+  description: 'Book flights, hotels, and holiday packages at EasyShope.',
 };
 
 export default function TravelPage() {

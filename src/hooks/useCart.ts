@@ -79,7 +79,7 @@ export const useCartStore = create<CartState>()(
       },
     }),
     {
-      name: 'charmshop-cart-storage', // Changed from e-clone-cart-storage
+      name: 'easyshope-cart-storage', // Changed from charmshop-cart-storage
       storage: createJSONStorage(() => customStorage),
     }
   )

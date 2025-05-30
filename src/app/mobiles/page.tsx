@@ -6,8 +6,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Smartphone } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Mobiles - CharmShop',
-  description: 'Find the latest smartphones and mobile accessories at CharmShop.',
+  title: 'Mobiles - EasyShope',
+  description: 'Find the latest smartphones and mobile accessories at EasyShope.',
 };
 
 export default function MobilesPage() {

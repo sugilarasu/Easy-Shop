@@ -6,8 +6,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Refrigerator } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Appliances - CharmShop',
-  description: 'Shop for kitchen and home appliances at CharmShop.',
+  title: 'Appliances - EasyShope',
+  description: 'Shop for kitchen and home appliances at EasyShope.',
 };
 
 export default function AppliancesPage() {

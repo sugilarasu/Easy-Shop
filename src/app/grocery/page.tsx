@@ -6,8 +6,8 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ShoppingBasket } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Grocery - CharmShop',
-  description: 'Shop for fresh groceries online at CharmShop.',
+  title: 'Grocery - EasyShope',
+  description: 'Shop for fresh groceries online at EasyShope.',
 };
 
 export default function GroceryPage() {

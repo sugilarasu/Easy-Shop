@@ -2,7 +2,7 @@
 import ShoppingCartClient from '@/components/ShoppingCartClient';
 
 export const metadata = {
-  title: 'Your Shopping Cart - CharmShop',
+  title: 'Your Shopping Cart - EasyShope',
 };
 
 export default function CartPage() {

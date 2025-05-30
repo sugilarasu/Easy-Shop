@@ -5,8 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Map, Home, ShoppingBag, Info, HelpCircle, Shield } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Sitemap - CharmShop',
-  description: 'Explore the sitemap of CharmShop to easily navigate through our website.',
+  title: 'Sitemap - EasyShope',
+  description: 'Explore the sitemap of EasyShope to easily navigate through our website.',
 };
 
 export default function SitemapPage() {
@@ -30,7 +30,7 @@ export default function SitemapPage() {
     { name: 'About Us', href: '/about-us' },
     { name: 'Contact Us', href: '/contact-us' },
     { name: 'Careers', href: '/careers' },
-    { name: 'CharmShop Stories', href: '/stories' },
+    { name: 'EasyShope Stories', href: '/stories' },
     { name: 'Press', href: '/press' },
   ];
 
@@ -58,7 +58,7 @@ export default function SitemapPage() {
           </div>
           <CardTitle className="text-3xl md:text-4xl font-bold">Sitemap</CardTitle>
           <CardDescription className="text-lg text-muted-foreground">
-            Navigate through CharmShop with ease.
+            Navigate through EasyShope with ease.
           </CardDescription>
         </CardHeader>
         <CardContent className="p-6 md:p-8 space-y-8">
@@ -96,7 +96,7 @@ export default function SitemapPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <section>
               <h2 className="text-xl font-semibold mb-3 flex items-center">
-                <Info className="h-5 w-5 mr-2 text-primary" /> About CharmShop
+                <Info className="h-5 w-5 mr-2 text-primary" /> About EasyShope
               </h2>
               <ul className="space-y-2 list-none p-0">
                 {aboutLinks.map(link => (
