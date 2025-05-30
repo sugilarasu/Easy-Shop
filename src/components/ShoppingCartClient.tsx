@@ -64,7 +64,7 @@ const ShoppingCartClient: React.FC = () => {
         {items.map(item => (
           <Card key={item.id} className="flex flex-col md:flex-row gap-4 p-4 shadow-sm">
             <div className="relative w-full md:w-32 h-32 aspect-square rounded-md overflow-hidden self-center md:self-start">
-              <Image src={item.imageUrl} alt={item.name} layout="fill" objectFit="cover" data-ai-hint={item.dataAiHint || 'product image'}/>
+              <Image src={item.imageUrl} alt={item.name} layout="fill" objectFit="cover" data-ai-hint={item.dataAiHint}/>
             </div>
             <div className="flex-grow space-y-2">
               <Link href={`/products/${item.id}`} className="hover:underline">
@@ -133,5 +133,3 @@ const ShoppingCartClient: React.FC = () => {
 };
 
 export default ShoppingCartClient;
-
-    

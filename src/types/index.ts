@@ -1,3 +1,4 @@
+
 export interface Product {
   id: string;
   name: string;
@@ -14,6 +15,7 @@ export interface Product {
   stock: number;
   tags?: string[];
   specifications?: Record<string, string>;
+  dataAiHint: string; // Added dataAiHint as a required property
 }
 
 export interface CartItem extends Product {

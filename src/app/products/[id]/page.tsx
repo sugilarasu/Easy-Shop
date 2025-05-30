@@ -1,3 +1,4 @@
+
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { getProductById, getReviewsByProductId, Product, Review } from '@/lib/products';
@@ -49,7 +50,7 @@ const ProductDetailsPage = ({ params }: ProductDetailsPageProps) => {
               layout="fill"
               objectFit="contain"
               className="bg-white"
-              data-ai-hint={product.dataAiHint || "product image"}
+              data-ai-hint={product.dataAiHint}
             />
             {discountPercentage > 0 && (
               <Badge variant="destructive" className="absolute top-3 right-3 bg-accent text-accent-foreground text-base px-3 py-1">
@@ -61,7 +62,7 @@ const ProductDetailsPage = ({ params }: ProductDetailsPageProps) => {
             <div className="grid grid-cols-4 gap-2">
               {product.images.map((img, index) => (
                 <div key={index} className="relative aspect-square w-full overflow-hidden rounded-md border hover:border-primary cursor-pointer">
-                  <Image src={img} alt={`${product.name} thumbnail ${index + 1}`} layout="fill" objectFit="cover" data-ai-hint={product.dataAiHint || "product thumbnail"}/>
+                  <Image src={img} alt={`${product.name} thumbnail ${index + 1}`} layout="fill" objectFit="cover" data-ai-hint={product.dataAiHint}/>
                 </div>
               ))}
             </div>
@@ -165,5 +166,3 @@ const ProductDetailsPage = ({ params }: ProductDetailsPageProps) => {
 };
 
 export default ProductDetailsPage;
-
-    
