@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+import Image from 'next/image'; // Added Image import
 import { useCartStore } from '@/hooks/useCart';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -49,8 +49,8 @@ export default function CheckoutPage() {
         name: item.name,
         price: item.price,
         quantity: item.quantity,
-        imageUrl: item.imageUrl, // Include necessary fields for the order
-        dataAiHint: item.dataAiHint,
+        imageUrl: item.imageUrl, 
+        dataAiHint: item.dataAiHint || '',
         category: item.category,
         brand: item.brand,
         description: item.description,
@@ -58,9 +58,9 @@ export default function CheckoutPage() {
         images: item.images,
         rating: item.rating,
         reviewsCount: item.reviewsCount,
-        stock: item.stock, // This might be more relevant for inventory check on backend
+        stock: item.stock, 
       })),
-      totalPrice: getTotalPrice() * 1.05, // Assuming total includes tax
+      totalPrice: getTotalPrice() * 1.05, 
       paymentMethod: selectedPaymentMethod,
     };
 
@@ -77,11 +77,7 @@ export default function CheckoutPage() {
         const errorResult = await response.json();
         throw new Error(errorResult.message || 'Failed to place order');
       }
-
-      // const result = await response.json();
-      // console.log(result.message); // "Order placed successfully (simulated)"
       
-      // Only clear cart and redirect on successful API call
       clearCart();
       router.push('/checkout/success');
 
@@ -155,14 +151,36 @@ export default function CheckoutPage() {
                     <CreditCard className="h-6 w-6 text-primary" />
                     <span>Credit/Debit Card</span>
                   </Label>
-                  <Label
-                    htmlFor="upi"
-                     className={`flex items-center gap-3 rounded-md border p-3 hover:bg-muted/50 transition-all ${isProcessing ? 'cursor-not-allowed opacity-50' : 'cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/5'}`}
-                  >
-                    <RadioGroupItem value="upi" id="upi" disabled={isProcessing}/>
-                    <Smartphone className="h-6 w-6 text-primary" />
-                    <span>UPI (Google Pay, PhonePe, etc.)</span>
-                  </Label>
+                  
+                  <div>
+                    <Label
+                      htmlFor="upi"
+                       className={`flex items-center gap-3 rounded-md border p-3 hover:bg-muted/50 transition-all ${isProcessing ? 'cursor-not-allowed opacity-50' : 'cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/5'}`}
+                    >
+                      <RadioGroupItem value="upi" id="upi" disabled={isProcessing}/>
+                      <Smartphone className="h-6 w-6 text-primary" />
+                      <span>UPI (Google Pay, PhonePe, etc.)</span>
+                    </Label>
+                    {selectedPaymentMethod === 'upi' && (
+                      <div className="mt-4 p-4 border rounded-md bg-muted/30 flex flex-col items-center">
+                        <p className="mb-2 text-sm font-medium text-center">Scan to pay with UPI</p>
+                        <div className="relative w-48 h-48 md:w-56 md:h-56">
+                          <Image
+                            src="/upi-qr-code.png"
+                            alt="UPI QR Code"
+                            layout="fill"
+                            objectFit="contain"
+                            data-ai-hint="upi payment"
+                          />
+                        </div>
+                        <p className="mt-2 text-xs text-muted-foreground text-center">
+                          After scanning, complete the payment on your UPI app. <br />
+                          Then click "Place Order" below.
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
                   <Label
                     htmlFor="cod"
                      className={`flex items-center gap-3 rounded-md border p-3 hover:bg-muted/50 transition-all ${isProcessing ? 'cursor-not-allowed opacity-50' : 'cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/5'}`}
