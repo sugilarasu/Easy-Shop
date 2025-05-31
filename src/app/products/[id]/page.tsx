@@ -1,7 +1,7 @@
 
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import { getProductById, getReviewsByProductId, Product, Review } from '@/lib/products';
+import { getAllProducts, getProductById, getReviewsByProductId, Product, Review } from '@/lib/products';
 import StarRating from '@/components/StarRating';
 import ProductDetailsClientBlock from '@/components/ProductDetailsClientBlock';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,6 +9,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import {format} from 'date-fns';
+import ProductGrid from '@/components/ProductGrid'; // Import ProductGrid
+import { Lightbulb } from 'lucide-react'; // Import an icon for the section title
 
 interface ProductDetailsPageProps {
   params: {
@@ -37,6 +39,11 @@ const ProductDetailsPage = ({ params }: ProductDetailsPageProps) => {
   const discountPercentage = product.originalPrice && product.originalPrice > product.price
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
     : 0;
+
+  const allProducts = getAllProducts();
+  const relatedProducts = allProducts
+    .filter(p => p.category === product.category && p.id !== product.id)
+    .slice(0, 5); // Get up to 5 related products
 
   return (
     <div className="container mx-auto px-4 md:px-6 py-8">
@@ -161,6 +168,23 @@ const ProductDetailsPage = ({ params }: ProductDetailsPageProps) => {
           </Card>
         </TabsContent>
       </Tabs>
+
+      {/* Related Products Section */}
+      {relatedProducts.length > 0 && (
+        <section className="mt-12">
+          <Card className="shadow-lg">
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold flex items-center">
+                <Lightbulb className="mr-2 h-7 w-7 text-accent" />
+                You Might Also Like
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ProductGrid products={relatedProducts} />
+            </CardContent>
+          </Card>
+        </section>
+      )}
     </div>
   );
 };
