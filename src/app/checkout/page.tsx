@@ -13,10 +13,8 @@ import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/hooks/use-toast';
 import { CreditCard, Smartphone, Truck, ShoppingBag, ArrowLeft } from 'lucide-react';
-import type { Metadata } from 'next'; // Cannot be used in client component directly
+import type { CartItem } from '@/types';
 
-// Note: Metadata should be handled in a parent layout or a dedicated metadata export if this remains a client component.
-// For now, we'll focus on the component logic. We can create a generateMetadata function if needed.
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -24,11 +22,11 @@ export default function CheckoutPage() {
   const { toast } = useToast();
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>('credit-card');
   const [isClient, setIsClient] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
-    if (items.length === 0) {
-      // Redirect to cart or home if cart is empty, to prevent direct access to checkout without items
+    if (items.length === 0 && !isProcessing) { // Don't redirect if processing an order
       toast({
         title: "Your cart is empty",
         description: "Please add items to your cart before proceeding to checkout.",
@@ -36,25 +34,70 @@ export default function CheckoutPage() {
       });
       router.push('/cart');
     }
-  }, [items, router, toast]);
+  }, [items, router, toast, isProcessing]);
 
-  const handlePlaceOrder = () => {
-    // Simulate order placement
+  const handlePlaceOrder = async () => {
+    setIsProcessing(true);
     toast({
-      title: "Order Placing...",
+      title: "Placing Order...",
       description: "Processing your order with " + selectedPaymentMethod.replace('-', ' ') + ".",
     });
-    
-    // In a real app, you'd send this to a backend.
-    // For now, we just clear the cart and redirect.
-    setTimeout(() => {
+
+    const orderData = {
+      items: items.map(item => ({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        imageUrl: item.imageUrl, // Include necessary fields for the order
+        dataAiHint: item.dataAiHint,
+        category: item.category,
+        brand: item.brand,
+        description: item.description,
+        longDescription: item.longDescription,
+        images: item.images,
+        rating: item.rating,
+        reviewsCount: item.reviewsCount,
+        stock: item.stock, // This might be more relevant for inventory check on backend
+      })),
+      totalPrice: getTotalPrice() * 1.05, // Assuming total includes tax
+      paymentMethod: selectedPaymentMethod,
+    };
+
+    try {
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData),
+      });
+
+      if (!response.ok) {
+        const errorResult = await response.json();
+        throw new Error(errorResult.message || 'Failed to place order');
+      }
+
+      // const result = await response.json();
+      // console.log(result.message); // "Order placed successfully (simulated)"
+      
+      // Only clear cart and redirect on successful API call
       clearCart();
       router.push('/checkout/success');
-    }, 1500);
+
+    } catch (error) {
+      console.error('Order placement error:', error);
+      toast({
+        title: "Order Failed",
+        description: (error as Error).message || "There was an issue placing your order. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsProcessing(false);
+    }
   };
   
-  if (!isClient || items.length === 0) {
-    // Render nothing or a loading indicator until client-side check completes or if cart is empty
+  if (!isClient || (items.length === 0 && !isProcessing)) {
     return (
       <div className="container mx-auto px-4 md:px-6 py-12 min-h-[calc(100vh-10rem)] flex items-center justify-center">
         <p className="text-muted-foreground">Loading checkout or cart is empty...</p>
@@ -65,7 +108,7 @@ export default function CheckoutPage() {
   return (
     <div className="container mx-auto px-4 md:px-6 py-12">
       <div className="mb-6">
-        <Button variant="outline" onClick={() => router.back()} size="sm">
+        <Button variant="outline" onClick={() => router.back()} size="sm" disabled={isProcessing}>
           <ArrowLeft className="mr-2 h-4 w-4" /> Back to Cart
         </Button>
       </div>
@@ -83,7 +126,7 @@ export default function CheckoutPage() {
                   {items.map(item => (
                     <div key={item.id} className="flex items-start gap-4 p-3 border rounded-md bg-muted/20">
                       <div className="relative w-20 h-20 aspect-square rounded-md overflow-hidden">
-                        <Image src={item.imageUrl} alt={item.name} layout="fill" objectFit="cover" data-ai-hint={item.dataAiHint} />
+                        <Image src={item.imageUrl} alt={item.name} layout="fill" objectFit="cover" data-ai-hint={item.dataAiHint || ''} />
                       </div>
                       <div className="flex-grow">
                         <Link href={`/products/${item.id}`} className="font-semibold hover:underline">{item.name}</Link>
@@ -98,28 +141,33 @@ export default function CheckoutPage() {
               <Separator />
               <div>
                 <h3 className="text-lg font-semibold mb-4">Choose Payment Method</h3>
-                <RadioGroup value={selectedPaymentMethod} onValueChange={setSelectedPaymentMethod} className="space-y-3">
+                <RadioGroup 
+                  value={selectedPaymentMethod} 
+                  onValueChange={(value) => !isProcessing && setSelectedPaymentMethod(value)} 
+                  className="space-y-3"
+                  disabled={isProcessing}
+                >
                   <Label
                     htmlFor="credit-card"
-                    className="flex items-center gap-3 rounded-md border p-3 hover:bg-muted/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/5 transition-all"
+                    className={`flex items-center gap-3 rounded-md border p-3 hover:bg-muted/50 transition-all ${isProcessing ? 'cursor-not-allowed opacity-50' : 'cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/5'}`}
                   >
-                    <RadioGroupItem value="credit-card" id="credit-card" />
+                    <RadioGroupItem value="credit-card" id="credit-card" disabled={isProcessing}/>
                     <CreditCard className="h-6 w-6 text-primary" />
                     <span>Credit/Debit Card</span>
                   </Label>
                   <Label
                     htmlFor="upi"
-                    className="flex items-center gap-3 rounded-md border p-3 hover:bg-muted/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/5 transition-all"
+                     className={`flex items-center gap-3 rounded-md border p-3 hover:bg-muted/50 transition-all ${isProcessing ? 'cursor-not-allowed opacity-50' : 'cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/5'}`}
                   >
-                    <RadioGroupItem value="upi" id="upi" />
+                    <RadioGroupItem value="upi" id="upi" disabled={isProcessing}/>
                     <Smartphone className="h-6 w-6 text-primary" />
                     <span>UPI (Google Pay, PhonePe, etc.)</span>
                   </Label>
                   <Label
                     htmlFor="cod"
-                    className="flex items-center gap-3 rounded-md border p-3 hover:bg-muted/50 cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/5 transition-all"
+                     className={`flex items-center gap-3 rounded-md border p-3 hover:bg-muted/50 transition-all ${isProcessing ? 'cursor-not-allowed opacity-50' : 'cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/5'}`}
                   >
-                    <RadioGroupItem value="cod" id="cod" />
+                    <RadioGroupItem value="cod" id="cod" disabled={isProcessing}/>
                     <Truck className="h-6 w-6 text-primary" />
                     <span>Cash on Delivery</span>
                   </Label>
@@ -147,7 +195,7 @@ export default function CheckoutPage() {
                 <span className="text-green-600">FREE</span>
               </div>
               <div className="flex justify-between">
-                <span>Estimated Tax</span>
+                <span>Estimated Tax (5%)</span>
                 <span>₹{(getTotalPrice() * 0.05).toFixed(2)}</span>
               </div>
               <Separator />
@@ -161,11 +209,11 @@ export default function CheckoutPage() {
                 size="lg" 
                 className="w-full bg-primary hover:bg-primary/90" 
                 onClick={handlePlaceOrder}
-                disabled={items.length === 0}
+                disabled={items.length === 0 || isProcessing}
               >
-                Place Order
+                {isProcessing ? 'Processing...' : 'Place Order'}
               </Button>
-               <Button size="lg" variant="outline" className="w-full" asChild>
+               <Button size="lg" variant="outline" className="w-full" asChild disabled={isProcessing}>
                 <Link href="/">
                   <ShoppingBag className="mr-2 h-5 w-5" />
                   Continue Shopping
